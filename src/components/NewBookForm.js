@@ -1,0 +1,39 @@
+import React, { useContext, useState } from 'react';
+import { BookContext } from '../contexts/BookContext';
+import {v4 as uuid} from 'uuid'
+const axios=require('axios')
+const NewBookForm = () => {
+  const { addBook } = useContext(BookContext);
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const i=uuid()
+    const det={
+      task: title,
+      message: author,
+      id:i
+    }
+    console.log(det)
+    addBook(title, author,i);
+    axios.post('/api/save',det )
+    .then(function (response) {
+      console.log(response);
+    })
+    setTitle('');
+    setAuthor('');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Task" value={title}
+        onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" placeholder="Message" value={author}
+        onChange={(e) => setAuthor(e.target.value)} />
+      <input type="submit" value="add book" />
+    </form>
+  );
+}
+ 
+export default NewBookForm;
