@@ -9,14 +9,21 @@ const rem=require('../models/rem')
 router.get('/',(req,res)=>{
     rem.find({  })
     .then((data)=>{  res.json(data);
-    console.log(data)})
+    })
+     .catch(()=>{console.log("error")})
+  });
+
+  router.get('/:id',(req,res)=>{
+    rem.find({ id:req.params.id })
+    .then((data)=>{  res.json(data);
+    })
      .catch(()=>{console.log("error")})
   });
 
 
   router.post('/save',(req,res)=>{
     const data=req.body
-    console.log(data)
+    
     const inst=new rem(data)
     inst.save((error)=>{
     if(error){
@@ -27,8 +34,25 @@ router.get('/',(req,res)=>{
     };
   })
 })
-router.delete('/delete/:id',(req,res)=>{
+
+
+router.delete('/delete/:id',async (req,res)=>{
+  try{
   const i=req.params.id
-  rem.deleteOne({id:i}).exec()
+  
+  const removed=await rem.deleteOne({id:i})
+  res.json(removed)
+}
+catch(error){
+res.json({msg:error})}})
+
+router.patch('/:id',async (req,res)=>{
+  try{
+    await rem.updateOne({id:id},{$set:{title: req.body.title}})
+  }
+  catch(error){
+    res.json({msg:error})}
+  
 })
+
  module.exports=router;

@@ -26,6 +26,7 @@ var data=[]
     setBooks([...books, {title, author, id: id}]);
   };
  
+  const no =(no)=>{return no*2}
   
 
   const removeBook = (id) => {
@@ -36,8 +37,8 @@ var data=[]
   }
 
   function AxiosDel(id){
-    axios.delete('http://localhost:8080/api/delete/:'+id).then(function (res) {
-      
+    axios.delete('http://localhost:8080/api/delete/'+id).then(function (res) {
+      Axios()
       console.log("successfully made a delete req")
     }).catch(function(error){
     console.log("pani avvatla")
@@ -45,7 +46,7 @@ var data=[]
    }
   useEffect(() => {
     Axios()
-    console.log("dcalled ")
+    console.log(" Get method is called ")
   }, [books.length])
  
 
