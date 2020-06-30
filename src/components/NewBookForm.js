@@ -1,9 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { BookContext } from '../contexts/BookContext';
+import {ThemeContext} from '../contexts/ThemeContext'
 import {v4 as uuid} from 'uuid'
 const axios=require('axios')
 const NewBookForm = () => {
   const { addBook } = useContext(BookContext);
+  const { books } = useContext(BookContext);
+  const {light,dark,isLight,setTheme}= useContext(ThemeContext);
+  const theme= isLight?light:dark;
+  const styles={
+      backgroundColor:theme.ui,
+      color:theme.text
+  }
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
  
@@ -27,9 +35,10 @@ const NewBookForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Task" value={title}
+      
+      <input style={styles}  type="text" placeholder="Task" value={title}
         onChange={(e) => setTitle(e.target.value)} />
-      <input type="text" placeholder="Message" value={author}
+      <input style={styles} type="text" placeholder="Message" value={author}
         onChange={(e) => setAuthor(e.target.value)} />
       <input type="submit" value="Add task" />
     </form>
