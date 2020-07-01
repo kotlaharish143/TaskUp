@@ -1,16 +1,24 @@
-
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 //schema
-const schema=mongoose.Schema;
-const todoSchema= new schema({
-   task:{
-      type:String,
-      unique: true},
-   message:String,
-   id:String
+const schema = mongoose.Schema;
+const todoSchema = new schema({
+   email: {
+      type: String,
+      unique: true
+   },
+   password: String,
+   todo: [{
+      task: String,
+      message: String,
+      id: {
+         type: String,
+
+      }
+   }]
+
 })
 
 //model
-const rem=  mongoose.model('rem',todoSchema)
+const rem = mongoose.model('rem', todoSchema)
 
-module.exports=rem;
+module.exports = rem;

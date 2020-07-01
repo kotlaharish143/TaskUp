@@ -5,8 +5,7 @@ import {v4 as uuid} from 'uuid'
 const axios=require('axios')
 const NewBookForm = () => {
   const { addBook } = useContext(BookContext);
-  const { books } = useContext(BookContext);
-  const {light,dark,isLight,setTheme}= useContext(ThemeContext);
+  const {light,dark,isLight}= useContext(ThemeContext);
   const theme= isLight?light:dark;
   const styles={
       backgroundColor:theme.ui,
@@ -25,7 +24,7 @@ const NewBookForm = () => {
     }
     console.log(det)
     addBook(title, author,i);
-    axios.post('/api/save',det )
+    axios.patch('/api/update/kotlaharish1@gmail.com',det )
     .then(function (response) {
       console.log(response);
     })

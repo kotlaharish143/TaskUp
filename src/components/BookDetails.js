@@ -4,7 +4,7 @@ import {ThemeContext} from '../contexts/ThemeContext'
 const BookDetails = ({ book }) => {
   const { removeBook } = useContext(BookContext);
 
-  const {light,dark,isLight,setTheme}= useContext(ThemeContext);
+  const {light,dark,isLight}= useContext(ThemeContext);
   const theme= isLight?light:dark;
   const styles={
       backgroundColor:theme.ui,

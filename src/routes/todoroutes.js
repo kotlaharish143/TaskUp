@@ -4,7 +4,7 @@ const rem = require('../models/rem')
 
 
 router.get('/', (req, res) => {
-  rem.find({})
+  rem.find({email:'kotlaharish1@gmail.com'}).select('todo')
     .then((data) => {
       res.json(data);
     })
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post('/save', (req, res) => {
+router.post('/create', (req, res) => {
   const data = req.body
   // we can also write rem.create(data,callback)
   const inst = new rem(data)
@@ -34,7 +34,7 @@ router.post('/save', (req, res) => {
     if (error) {
       res.json("error")
     } else {
-      res.status(200).json("console.log(req.body)")
+      res.json("console.log(req.body)")
     };
   })
 })
@@ -45,7 +45,7 @@ router.delete('/delete/:id', async (req, res) => {
     const i = req.params.id
 
     const removed = await rem.deleteOne({
-      id: i
+      
     })
     res.json(removed)
   } catch (error) {
@@ -55,22 +55,26 @@ router.delete('/delete/:id', async (req, res) => {
   }
 })
 
-router.patch('/update/:id', async (req, res) => {
-  try {
-
-    await rem.updateOne({
-      id: req.params.id
+router.patch('/update/:email', async (req, res) => {
+ 
+    const todo = req.body
+    console.log(todo)
+    console.log(req.params.email)
+    await rem.findOneAndUpdate({
+      email: req.params.email
+      
     }, {
-      $set: {
-        task: "deploy to heroku after developing"
-      }
-    })
-  } catch (error) {
-    res.json({
-      msg: "error"
-    })
-  }
+      $push: {
+        todo: todo
 
-})
+      
+    }}).then(()=>{res.json("success ra mawa update ayyindi")})
+    .catch((err)=>{console.log(err)})
+  })
+  
+   
+  
+
+
 
 module.exports = router;

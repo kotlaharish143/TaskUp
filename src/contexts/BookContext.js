@@ -1,6 +1,6 @@
 import React, { createContext, useState,useEffect } from 'react';
-import {v4 as uuid} from 'uuid';
-import Axios from 'axios';
+
+
 const axios= require('axios')
 export const BookContext = createContext();
 
@@ -13,8 +13,8 @@ var data=[]
     url: '/api'
 
   }).then(function (res) {
-    
-    data=res.data
+    console.log(res.data[0].todo)
+    data=res.data[0].todo
     setBooks(data)
   })
  }
