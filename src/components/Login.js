@@ -46,14 +46,14 @@ console.log("jampandu")})
         onChange={(e) => setEmail(e.target.value)} />
       <input style={styles} type="text" placeholder="password" value={password}
         onChange={(e) => setPassword(e.target.value)} />
-      <input type="submit" value="Log in" />
+      <input style={styles}  type="submit" value="Log in" />
     </form>
     ):!dispTodo && !mode ? (<div><form onSubmit={handleSubmit2}>
       <input style={styles}  type="text" placeholder="Email" value={email}
         onChange={(e) => setEmail(e.target.value)} />
       <input style={styles} type="text" placeholder="Set a password" value={password}
         onChange={(e) => setPassword(e.target.value)} />
-      <input type="submit" value="Sign up" />
+      <input style={styles}  type="submit" value="Sign up" />
      
     </form></div>):<h6>logged in</h6>
 

@@ -6,11 +6,11 @@ export const ThemeContext= createContext();
 
 const ThemeContextProvider=(props)=>{
     
-    const [light]=useState({bg:'#pasass',text:'black',ui:'#CFE5CF'}
+    const [light]=useState({bg:'#e58e26',text:'black',ui:'#badc58'}
 
     )
     const [dark]=useState({
-        bg:'#dc2430',text:'#fff',ui:'#018786'
+        bg:'#e58e26',text:'#fff',ui:'#018786'
         })
         const [isLight,setTheme]=useState(true)
        

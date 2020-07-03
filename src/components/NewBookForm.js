@@ -42,7 +42,7 @@ const NewBookForm = () => {
         onChange={(e) => setTitle(e.target.value)} />
       <input style={styles} type="text" placeholder="Message" value={author}
         onChange={(e) => setAuthor(e.target.value)} />
-      <input type="submit" value="Add task" />
+      <input style={styles} type="submit" value="Add task" />
     </form>
   ):<div></div>
 }

@@ -19,12 +19,14 @@ body {
   display:flex;
   flex-direction: row;
   justify-content: center;
+  color:black;
   translate:all 1.5s ease;
 }
 .jamba :hover{
   transform: scale(1.5);
-  opacity: 0.7;
-  color: red;
+  
+  color: black;
+  text-shadow:  black;
 }
 .list{
   display:flex;
@@ -97,7 +99,7 @@ input[type="text"] {
 }
 input[type="submit"] {
   margin: 10px auto;
-  background: #eee;
+  
   border: 0;
   padding: 6px 20px;
   display: block;

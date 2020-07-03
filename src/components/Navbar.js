@@ -11,7 +11,7 @@ const Navbar = () => {
   const {dispTodo,setDisp,setMode,mode}=useContext(AuthContext)
   const theme= isLight?light:dark;
   const styles={
-      backgroundColor: theme.bg,
+      backgroundColor: theme.ui,
       color:theme.text
   }
 
