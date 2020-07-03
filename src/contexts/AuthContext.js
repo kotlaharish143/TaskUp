@@ -6,10 +6,10 @@ export const AuthContext= createContext();
 
     const [dispTodo,setDisp]= useState(false)
     const [authId,setAuth]=useState()
-         
+    const [mode,setMode]=useState(true)    
 
     return (
-        <AuthContext.Provider value={{dispTodo,setDisp,setAuth,authId}}>
+        <AuthContext.Provider value={{dispTodo,setDisp,setAuth,authId,mode,setMode}}>
             
          {props.children}
         </AuthContext.Provider>

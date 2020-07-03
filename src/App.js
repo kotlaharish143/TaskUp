@@ -1,17 +1,23 @@
-import React from "react";
+import React,{useContext} from "react";
 import Navbar from "./components/Navbar";
 import BookContextProvider from "./contexts/BookContext";
 import BookList from "./components/BookList";
 import NewBookForm from "./components/NewBookForm";
 import Login from "./components/Login";
-import ThemeContextProvider from "./contexts/ThemeContext";
+import ThemeContextProvider, { ThemeContext } from "./contexts/ThemeContext";
 
 import AuthContextProvider from "./contexts/AuthContext";
 function App() {
- 
+  const {light,dark,isLight,setTheme}= useContext(ThemeContext);
+  const theme= isLight?light:dark;
+  console.log(theme)
+  const styles={
+      backgroundColor: theme.bg,
+      
+  }
 
   return (
-    <div className="App" >
+    <div className="App" style={styles} >
      
         <BookContextProvider>
         <ThemeContextProvider>
