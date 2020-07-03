@@ -11,8 +11,14 @@ body {
   background-color: #192a56;
   margin: 20px auto;
   width: 90%;
+  height:100wh;
   max-width: 700px;
   color: #eee;
+}
+.jamba{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .list{
   display:flex;
