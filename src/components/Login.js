@@ -24,7 +24,7 @@ const data={
   axios.post('http://localhost:8080/api/create',data
 
 ).then((res)=>{console.log(res);
-{setDisp(!dispTodo);setAuth(email)}}).catch((err)=>{console.log(err);
+{setAuth(email)}setDisp(!dispTodo);}).catch((err)=>{console.log(err);
 })
 setMode(!mode)
 }
