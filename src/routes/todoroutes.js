@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const rem = require('../models/rem');
-
+const cors=require('cors')
 
 
 
@@ -53,7 +53,7 @@ router.get('/login/email/:email/password/:password', async (req, res) => {
 })
 
 
-router.patch('/update/email/:email/id/:id', async (req, res) => {
+router.patch('/update/email/:email/id/:id',cors(), async (req, res) => {
  
   const email= req.params.email;
   const id= req.params.id;
@@ -73,7 +73,7 @@ router.patch('/update/email/:email/id/:id', async (req, res) => {
   
 })
 
-router.patch('/update/:email', async (req, res) => {
+router.patch('/update/:email',cors(), async (req, res) => {
    try{
     const todo = req.body
     console.log(todo)
