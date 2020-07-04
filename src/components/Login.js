@@ -24,7 +24,7 @@ const data={
   axios.post('http://localhost:8080/api/create',data
 
 ).then((res)=>{console.log(res);
-{setAuth(email)}setDisp(!dispTodo);}).catch((err)=>{console.log(err);
+{setDisp(!dispTodo);setAuth(email)}}).catch((err)=>{console.log(err);
 })
 setMode(!mode)
 }
@@ -46,14 +46,14 @@ console.log("jampandu")})
         onChange={(e) => setEmail(e.target.value)} />
       <input style={styles} type="text" placeholder="password" value={password}
         onChange={(e) => setPassword(e.target.value)} />
-      <input style={styles}  type="submit" value="Log in" />
+      <input type="submit" value="Log in" />
     </form>
     ):!dispTodo && !mode ? (<div><form onSubmit={handleSubmit2}>
       <input style={styles}  type="text" placeholder="Email" value={email}
         onChange={(e) => setEmail(e.target.value)} />
       <input style={styles} type="text" placeholder="Set a password" value={password}
         onChange={(e) => setPassword(e.target.value)} />
-      <input style={styles}  type="submit" value="Sign up" />
+      <input type="submit" value="Sign up" />
      
     </form></div>):<h6>logged in</h6>
 

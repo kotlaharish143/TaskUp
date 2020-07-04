@@ -1,20 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const rem = require('../models/rem');
-const { getMaxListeners } = require('../models/rem');
 
 
 
 
-router.get('/:email', (req, res) => {
-  rem.find({email:req.params.email}).select('todo')
 
-    .then((data) => {
+router.get('/:email', async (req, res) => {
+  try{
+  const data=await rem.find({email:req.params.email}).select('todo')
       res.json(data);
-    })
-    .catch(() => {
-      console.log("error")
-    })
+      console.log(data)
+    }
+    catch(err) {
+      console.log(err)
+      
+    }
 });
 
 
@@ -24,7 +25,7 @@ router.post('/create', (req, res) => {
   const inst = new rem(data)
   inst.save((error) => {
     if (error) {
-      res.json("error")
+      res.json("err")
     } else {
       res.json("console.log(req.body)")
     };
@@ -57,36 +58,36 @@ router.patch('/update/email/:email/id/:id', async (req, res) => {
   const email= req.params.email;
   const id= req.params.id;
   console.log(email,id)
-  await rem.findOneAndUpdate({email: req.params.email}
-    ,{  $pull:{
-      todo:{
-        id:req.params.id
+  try{
+    await rem.findOneAndUpdate({email: req.params.email}
+      ,{  $pull:{
+        todo:{
+          id:req.params.id
+        }
       }
-    }
-    }).then(()=>{res.json("success ra mawa update ayyindi")})
-  .catch((err)=>{console.log(err)})
+      })
+  }
+ catch(err){
+   console.log(err)
+ }
+  
 })
 
 router.patch('/update/:email', async (req, res) => {
- 
+   try{
     const todo = req.body
     console.log(todo)
     console.log(req.params.email)
     await rem.findOneAndUpdate({
-      email: req.params.email
-      
+      email: req.params.email   
     }, {
       $push: {
-        todo: todo
-
-      
-    }}).then(()=>{res.json("success ra mawa update ayyindi")})
-    .catch((err)=>{console.log(err)})
+        todo: todo   
+    }})
+   }
+  catch(err){
+console.log(err)
+  }
   })
-  
-   
-  
-
-
 
 module.exports = router;

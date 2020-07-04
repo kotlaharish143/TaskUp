@@ -27,7 +27,7 @@ const NewBookForm = () => {
     }
     console.log(det)
     addBook(title, author,i);
-    axios.patch('http://localhost:8080/api/update/'+authId,det )
+    axios.patch('http://127.0.0.1:8080/api/update/'+authId,det )
     .then(function (response) {
       console.log(response);
     })
@@ -42,7 +42,7 @@ const NewBookForm = () => {
         onChange={(e) => setTitle(e.target.value)} />
       <input style={styles} type="text" placeholder="Message" value={author}
         onChange={(e) => setAuthor(e.target.value)} />
-      <input style={styles} type="submit" value="Add task" />
+      <input type="submit" value="Add task" />
     </form>
   ):<div></div>
 }

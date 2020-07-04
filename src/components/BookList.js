@@ -16,24 +16,24 @@ const BookList = () => {
       color:theme.text
   }
  
-  var data=[]
-  function Axios(){
+  
+  function Axios(authId){
+    var data=[]
+    if(authId){
     console.log("its called",authId)
-   axios({
-     method: "GET",
-     url: '/api/'+authId
- 
-   }).then(function (res) {
+   axios.get(
+      'http://127.0.0.1:8080/api/'+authId
+   ).then(function (res) {
      if(res.data[0]){
      console.log(res.data[0].todo)
      data=res.data[0].todo
      setBooks(data)}
    })
-  }
-
+    }}
+  
 
 useEffect(() => {
-  Axios()
+  Axios(authId)
   console.log("rendering")
 },[authId,books.length]
 )
