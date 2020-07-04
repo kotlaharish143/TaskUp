@@ -74,6 +74,8 @@ router.patch('/update/email/:email/id/:id',cors(), async (req, res) => {
 })
 
 router.patch('/update/:email',cors(), async (req, res) => {
+  res.header("Access=Control-Allow-Origin","https://musing-goldberg-2764ed.netlify.app/");
+   res.header("Access=Control-Allow-Headers");
    try{
     const todo = req.body
     console.log(todo)
