@@ -1,4 +1,4 @@
-import React, { createContext, useState,} from 'react';
+wimport React, { createContext, useState,} from 'react';
 
 
 
@@ -6,7 +6,7 @@ export const ThemeContext= createContext();
 
 const ThemeContextProvider=(props)=>{
     
-    const [light]=useState({bg:'#pasass',text:'black',ui:'#CFE5CF'}
+    const [light]=useState({bg:'#pasass',text:'yellow',ui:'#CFE5CF'}
 
     )
     const [dark]=useState({
