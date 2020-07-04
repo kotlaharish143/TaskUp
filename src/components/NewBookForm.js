@@ -27,7 +27,7 @@ const NewBookForm = () => {
     }
     console.log(det)
     addBook(title, author,i);
-    axios.patch('http://127.0.0.1:8080/api/update/'+authId,det )
+    axios.patch('/api/update/'+authId,det )
     .then(function (response) {
       console.log(response);
     })
