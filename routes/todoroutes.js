@@ -2,16 +2,18 @@ const express = require('express')
 const router = express.Router()
 const rem = require('../models/rem');
 const cors=require('cors')
+const path=require('path')
 
-
-router.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://musing-goldberg-2764ed.netlify.app/"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PATCH,OPTIONS,DELETE,PUT");
-  next();
-});
-
-
+// router.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "https://musing-goldberg-2764ed.netlify.app/"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET,POST,PATCH,OPTIONS,DELETE,PUT");
+//   next();
+// });
+cors()
+// router.get('/',(req,res)=>{
+//   res.sendFile(path.join(__dirname+"..","..","public","index.html"))
+// })
 
 router.get('/:email', async (req, res) => {
   try{
@@ -81,11 +83,10 @@ router.patch('/update/email/:email/id/:id',cors(), async (req, res) => {
 })
 
 router.patch('/update/:email',cors(), async (req, res) => {
-  res.header("Access=Control-Allow-Origin","https://musing-goldberg-2764ed.netlify.app/");
-   res.header("Access=Control-Allow-Headers");
+  
    try{
     const todo = req.body
-    console.log(todo)
+    console.log("Adding new task"+todo)
     console.log(req.params.email)
     await rem.findOneAndUpdate({
       email: req.params.email   

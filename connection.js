@@ -5,11 +5,11 @@ const path = require('path')
 const cors=require('cors')
 const app = express()
 
-const PORT = process.env.port || 8080
+const PORT = process.env.port || 8082
 const routes = require('./routes/todoroutes')
 
 
-mongoose.connect('mongodb://localhost/todo', {
+mongoose.connect('mongodb+srv://harish143:12345678@@cluster0.5b5nr.mongodb.net/todo?retryWrites=true&w=majority', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: false,
@@ -26,6 +26,10 @@ app.use(express.urlencoded({
 app.use(cors())
 app.use(morgan('tiny'))
 app.use('/api', routes);
+app.use(express.static(path.join(__dirname,"client","build")))
+app.get("/",(req,res)=>{
+  res.sendFile(path.join(__dirname,"client","build","index.html"))
+})
 app.listen(PORT)
 
 
