@@ -5,7 +5,7 @@ const path = require('path')
 const cors=require('cors')
 const app = express()
 
-const PORT = process.env.port || 8082
+const PORT = process.env.PORT || 8082
 const routes = require('./routes/todoroutes')
 
 
