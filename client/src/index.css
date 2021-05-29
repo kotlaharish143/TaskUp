@@ -1,0 +1,108 @@
+@font-face {
+  font-family:'MateSC' ;
+  src: url(./fonts/MateSC-Regular.ttf);
+}
+body {
+  margin: 0;
+  font-family: "MateSC",-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0c1f27;
+}
+.App {
+ 
+  margin: 20px auto;
+  width: 90%;
+
+  max-width: 700px;
+  color: #eee;
+}
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+.jamba{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+.boldtext{
+  font-weight:800
+}
+.list{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+}
+.list li{
+  margin-right:10px;
+}
+.navbar {
+  padding: 10px 20px;
+  text-align: center;
+  
+}
+.navbar h1 {
+  margin: 10px 0;
+}
+
+
+.book-list ul {
+  padding: 0;
+  list-style-type: none;
+}
+.book-list li {
+ 
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+.book-list li:hover {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+.book-list .title {
+  font-weight: bold;
+ 
+  font-size: 1.2em;
+}
+.book-list .author {
+  font-size: 0.9em;
+  
+}
+.empty {
+  
+  text-align: center;
+}
+
+form {
+  padding: 20px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 6px 0;
+  
+  color: #fff;
+  border: 0;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+.navbar li{
+  Cursor:pointer
+}
+input[type="submit"] {
+  margin: 10px auto;
+  background: #eee;
+  border: 0;
+  padding: 6px 20px;
+  display: block;
+}
